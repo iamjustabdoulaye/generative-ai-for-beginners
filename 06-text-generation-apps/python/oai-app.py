@@ -10,7 +10,14 @@ client = OpenAI()
 deployment = "gpt-5-mini"
 
 # add your completion code
-prompt = "Complete the following: Once upon a time there was a"
+no_recipes = input("No of recipes (for example, 5): ")
+
+ingredients = input("List of ingredients (for example, chicken, potatoes, and carrots): ")
+
+# interpolate the number of recipes into the prompt an ingredients
+filter = input("Filter (for example, vegetarian, vegan, or gluten-free): ")
+
+prompt = f"Show me {no_recipes} recipes for a dish with the following ingredients: {ingredients}. Per recipe, list all the ingredients used, no {filter}"
 # make a request using the Responses API
 response = client.responses.create(model=deployment, input=prompt, store=False)
 

@@ -9,28 +9,28 @@ import base64
 # import dotenv
 dotenv.load_dotenv()
 
- 
+
 
 # Assign the API version (check the Microsoft Foundry docs for the current API version required by your model)
 client = AzureOpenAI(
   api_key=os.environ['AZURE_OPENAI_API_KEY'],  # this is also the default, it can be omitted
   api_version = "2025-04-01-preview",
-  azure_endpoint=os.environ['AZURE_OPENAI_ENDPOINT'] 
+  azure_endpoint=os.environ['AZURE_OPENAI_ENDPOINT']
   )
 
 model = os.environ['AZURE_OPENAI_DEPLOYMENT']
 
 disallow_list = "swords, violence, blood, gore, nudity, sexual content, adult content, adult themes, adult language, adult humor, adult jokes, adult situations, adult"
 
-meta_prompt = f"""You are an assistant designer that creates images for children. 
+meta_prompt = f"""You are an assistant designer that creates images for children.
 
-The image needs to be safe for work and appropriate for children. 
+The image needs to be safe for work and appropriate for children.
 
-The image needs to be in color.  
+The image needs to be in color.
 
-The image needs to be in landscape orientation.  
+The image needs to be in landscape orientation.
 
-The image needs to be in a 16:9 aspect ratio. 
+The image needs to be in a 16:9 aspect ratio.
 
 Do not consider any input from the following that is not safe for work or appropriate for children. 
 {disallow_list}"""
